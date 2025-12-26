@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Productivity Weekly — Work smarter with AI</title>
+  <meta name="description" content="Weekly AI automation tips, insights, and tools for consultants and knowledge workers. One email, every Thursday. Free.">
+  <meta name="keywords" content="AI newsletter, productivity, automation, consultants, n8n, AI tools">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AI Productivity Weekly">
+  <meta property="og:description" content="One automation. One insight. Every Thursday.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aiprodweekly.com">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Productivity Weekly">
+  <meta name="twitter:description" content="Weekly AI automation tips for consultants. No fluff.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <style>
+    :root {
+      --color-bg: #fafafa;
+      --color-text: #1a1a1a;
+      --color-text-muted: #666;
+      --color-primary: #2563eb;
+      --color-primary-hover: #1d4ed8;
+      --color-border: #e5e5e5;
+      --color-card-bg: #ffffff;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      --font-mono: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+      --max-width: 680px;
+      --spacing: 1.5rem;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--spacing);
+    }
+
+    /* Header */
+    header {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .logo {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-text);
+      text-decoration: none;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 5rem 0 4rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: var(--color-text-muted);
+      font-weight: 500;
+    }
+
+    .hero .subheadline {
+      font-size: 1.125rem;
+      color: var(--color-text-muted);
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    /* Signup Form */
+    .signup-form {
+      display: flex;
+      gap: 0.75rem;
+      max-width: 420px;
+      margin: 0 auto 1rem;
+    }
+
+    .signup-form input[type="email"] {
+      flex: 1;
+      padding: 0.875rem 1rem;
+      font-size: 1rem;
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      background: var(--color-card-bg);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .signup-form input[type="email"]:focus {
+      border-color: var(--color-primary);
+    }
+
+    .signup-form button {
+      padding: 0.875rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+      background: var(--color-primary);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .signup-form button:hover {
+      background: var(--color-primary-hover);
+    }
+
+    .trust-line {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Features Section */
+    .features {
+      padding: 4rem 0;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .features h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      color: var(--color-text-muted);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .feature {
+      text-align: center;
+    }
+
+    .feature-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .feature h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature p {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    /* Sample Section */
+    .sample {
+      padding: 4rem 0;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .sample h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--color-text-muted);
+    }
+
+    .sample-box {
+      background: var(--color-card-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 2rem;
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      line-height: 1.8;
+    }
+
+    .sample-box .issue-header {
+      color: var(--color-text-muted);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .sample-box .section-title {
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .sample-box .highlight {
+      color: var(--color-primary);
+    }
+
+    .sample-box .meta {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--color-border);
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+    }
+
+    /* About Section */
+    .about {
+      padding: 4rem 0;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .about h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .about p {
+      color: var(--color-text-muted);
+      margin-bottom: 1rem;
+      line-height: 1.8;
+    }
+
+    .about ul {
+      list-style: none;
+      margin: 1rem 0;
+      color: var(--color-text-muted);
+    }
+
+    .about ul li {
+      padding-left: 1.5rem;
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+
+    .about ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--color-text-muted);
+    }
+
+    /* FAQ Section */
+    .faq {
+      padding: 4rem 0;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .faq h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .faq-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .faq-item h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .faq-item p {
+      color: var(--color-text-muted);
+      line-height: 1.7;
+    }
+
+    /* CTA Section */
+    .cta {
+      padding: 4rem 0;
+      border-top: 1px solid var(--color-border);
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+    }
+
+    .cta .trust-line {
+      margin-top: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      padding: 3rem 0;
+      border-top: 1px solid var(--color-border);
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-tagline {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .footer-links a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--color-text);
+    }
+
+    .footer-copyright {
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .hero {
+        padding: 3rem 0;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .signup-form {
+        flex-direction: column;
+      }
+
+      .signup-form button {
+        width: 100%;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .sample-box {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" class="logo">AI Productivity Weekly</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <h1>
+          Work smarter with AI.
+          <span>Every Thursday.</span>
+        </h1>
+        <p class="subheadline">
+          One automation you can implement. One insight worth knowing.
+          No fluff. Just practical AI productivity for consultants and knowledge workers.
+        </p>
+        <form
+          action="https://buttondown.email/api/emails/embed-subscribe/aiprodweekly"
+          method="post"
+          target="popupwindow"
+          class="signup-form"
+        >
+          <input type="email" name="email" placeholder="you@example.com" required>
+          <button type="submit">Subscribe Free</button>
+        </form>
+        <p class="trust-line">Join 500+ consultants and knowledge workers. Unsubscribe anytime.</p>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+      <div class="container">
+        <h2>Every Thursday in your inbox:</h2>
+        <div class="features-grid">
+          <div class="feature">
+            <div class="feature-icon">&#128295;</div>
+            <h3>One Automation</h3>
+            <p>A specific workflow you can implement today. n8n templates, Zapier alternatives, and step-by-step guides.</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">&#129504;</div>
+            <h3>One AI Insight</h3>
+            <p>A concept that changes how you think about AI at work. No theory—just practical mental models.</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">&#128736;</div>
+            <h3>One Tool or Resource</h3>
+            <p>Apps, prompts, and resources worth your time. Tested and vetted.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sample Issue -->
+    <section class="sample">
+      <div class="container">
+        <h2>Here's what a typical issue looks like:</h2>
+        <div class="sample-box">
+          <div class="issue-header">AI Productivity Weekly — Issue #7</div>
+          <div class="section-title">&#128295; THIS WEEK'S AUTOMATION: Invoice Follow-Up Sequence</div>
+          <p><strong>The problem:</strong> Chasing unpaid invoices is awkward.</p>
+          <p><strong>The solution:</strong> A 3-email sequence that runs automatically when invoices hit 7, 14, and 30 days overdue.</p>
+          <div class="meta">
+            <span class="highlight">Time to implement:</span> 45 minutes<br>
+            <span class="highlight">Time saved:</span> 1-2 hours/month (plus faster payments)
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="about">
+      <div class="container">
+        <h2>Who writes this?</h2>
+        <p>I'm Steve, and I've spent the last year building AI productivity tools for consultants and knowledge workers.</p>
+        <p>I got tired of AI newsletters that were either:</p>
+        <ul>
+          <li>Too hyped ("AGI is coming!")</li>
+          <li>Too vague ("AI will transform everything!")</li>
+          <li>Too long (3,000 words of nothing)</li>
+        </ul>
+        <p>So I made one that's actually useful. Every issue is something I'd want to receive.</p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+      <div class="container">
+        <h2>Questions</h2>
+        <div class="faq-item">
+          <h3>How often will I hear from you?</h3>
+          <p>Once a week, every Thursday. That's it. No "special offers" or surprise emails.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Is this really free?</h3>
+          <p>Yes. I'll occasionally mention tools I've built, but the newsletter itself is free forever.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Can I unsubscribe?</h3>
+          <p>Anytime, one click. No guilt trips.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <div class="container">
+        <h2>Ready to work smarter?</h2>
+        <form
+          action="https://buttondown.email/api/emails/embed-subscribe/aiprodweekly"
+          method="post"
+          target="popupwindow"
+          class="signup-form"
+        >
+          <input type="email" name="email" placeholder="you@example.com" required>
+          <button type="submit">Subscribe Free</button>
+        </form>
+        <p class="trust-line">No spam. Unsubscribe anytime.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-brand">AI Productivity Weekly</div>
+      <div class="footer-tagline">A weekly newsletter for consultants and knowledge workers.</div>
+      <div class="footer-links">
+        <a href="/privacy">Privacy Policy</a>
+      </div>
+      <div class="footer-copyright">&copy; 2025</div>
+    </div>
+  </footer>
+</body>
+</html>
