@@ -1,4 +1,4 @@
-# AI Productivity Weekly — Issue #1
+# The AI Reframe — Issue #1
 
 **Subject Line:** The 15-minute Gmail cleanup that saves 3 hours/week
 
@@ -6,7 +6,7 @@
 
 Hey,
 
-Welcome to AI Productivity Weekly. Every Thursday: one automation, one insight, one tool. Let's dive in.
+Welcome to The AI Reframe. Every Thursday: one automation, one insight, one tool. Let's dive in.
 
 ---
 
@@ -96,4 +96,4 @@ P.S. Know a consultant drowning in email? Forward this to them. They'll thank yo
 
 ---
 
-*You're receiving this because you signed up at aiprodweekly.com. [Unsubscribe here](#)*
+*You're receiving this because you signed up at theaireframe.com. [Unsubscribe here](#)*

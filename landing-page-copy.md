@@ -1,6 +1,6 @@
-# AI Productivity Weekly — Landing Page Copy
+# The AI Reframe — Landing Page Copy
 
-**Domain:** aiprodweekly.com
+**Domain:** theaireframe.com
 **Purpose:** Email capture for newsletter subscribers
 **Style:** Clean, minimal, professional — no hype
 
@@ -178,7 +178,7 @@ No spam. Unsubscribe anytime.
 ## Footer
 
 ```
-AI Productivity Weekly
+The AI Reframe
 A weekly newsletter for consultants and knowledge workers.
 
 [Privacy Policy] [Unsubscribe]
@@ -220,7 +220,7 @@ Buttondown embed code:
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>AI Productivity Weekly — Work smarter with AI</title>
+  <title>The AI Reframe — Work smarter with AI</title>
   <meta name="description" content="Weekly AI automation tips, insights, and tools for consultants and knowledge workers. One email, every Thursday.">
 </head>
 <body>
@@ -262,19 +262,19 @@ Buttondown embed code:
 # SEO Metadata
 
 ```html
-<title>AI Productivity Weekly — Work smarter with AI</title>
+<title>The AI Reframe — Work smarter with AI</title>
 <meta name="description" content="Weekly AI automation tips, insights, and tools for consultants and knowledge workers. One email, every Thursday. Free.">
 <meta name="keywords" content="AI newsletter, productivity, automation, consultants, n8n, AI tools">
 
 <!-- Open Graph -->
-<meta property="og:title" content="AI Productivity Weekly">
+<meta property="og:title" content="The AI Reframe">
 <meta property="og:description" content="One automation. One insight. Every Thursday.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://aiprodweekly.com">
+<meta property="og:url" content="https://theaireframe.com">
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="AI Productivity Weekly">
+<meta name="twitter:title" content="The AI Reframe">
 <meta name="twitter:description" content="Weekly AI automation tips for consultants. No fluff.">
 ```
 
@@ -308,7 +308,7 @@ respects your time.
 
 ## Option E (Direct)
 ```
-AI Productivity Weekly
+The AI Reframe
 One automation. One insight. Every Thursday.
 ```
 

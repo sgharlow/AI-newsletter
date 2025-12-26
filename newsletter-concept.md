@@ -1,4 +1,4 @@
-# AI Productivity Weekly — Unified Newsletter Concept
+# The AI Reframe — Unified Newsletter Concept
 
 **Purpose:** A single newsletter that serves all 7 products, builds audience, establishes authority, and creates cross-selling opportunities.
 
@@ -12,13 +12,13 @@
 
 | Name | Vibe | Domain Check Needed |
 |------|------|---------------------|
-| **AI Productivity Weekly** | Professional, clear | aiproductivityweekly.com |
+| **The AI Reframe** | Professional, clear | aiproductivityweekly.com |
 | **The AI Edge** | Competitive advantage | theaiedge.com |
 | **10x with AI** | Outcome-focused | 10xwithai.com |
 | **The Intelligent Worker** | Sophisticated | intelligentworker.com |
 | **AI Ops Weekly** | Technical, concise | aiopsweekly.com |
 
-**Recommended:** "AI Productivity Weekly" — clear, SEO-friendly, describes exactly what it is.
+**Recommended:** "The AI Reframe" — clear, SEO-friendly, describes exactly what it is.
 
 ---
 
@@ -247,7 +247,7 @@ See you next Thursday,
 Steve
 
 ───────────────────────────────────────────────────────────────────
-AI Productivity Weekly
+The AI Reframe
 Unsubscribe | Update preferences | Read online
 ═══════════════════════════════════════════════════════════════════
 ```
@@ -381,7 +381,7 @@ This enables targeted product announcements later.
 ## Launch Checklist
 
 ### Phase 1: Setup (Week 1)
-- [ ] Choose final name (recommend: "AI Productivity Weekly")
+- [ ] Choose final name (recommend: "The AI Reframe")
 - [ ] Set up Buttondown account (or use existing)
 - [ ] Create welcome email sequence (3 emails)
 - [ ] Design email template (simple, text-focused)
@@ -438,7 +438,7 @@ This enables targeted product announcements later.
 **Subject:** You're in. Here's what to expect.
 
 ```
-Welcome to AI Productivity Weekly.
+Welcome to The AI Reframe.
 
 Every Thursday, you'll get:
 • One automation you can implement
@@ -511,7 +511,7 @@ Steve
 
 ## Next Steps
 
-1. **Decide on name** — "AI Productivity Weekly" recommended
+1. **Decide on name** — "The AI Reframe" recommended
 2. **Create landing page** — Simple, one-field signup
 3. **Write first 4 issues** — Bank content before launch
 4. **Create 2-3 lead magnets** — PDF downloads

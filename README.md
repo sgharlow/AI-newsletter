@@ -1,4 +1,4 @@
-# AI Productivity Weekly
+# The AI Reframe
 
 A unified newsletter connecting all projects in the AI Productivity Ecosystem.
 

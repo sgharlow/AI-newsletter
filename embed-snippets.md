@@ -2,7 +2,7 @@
 
 Ready-to-use signup forms for embedding in all 8 products.
 
-**Buttondown Username:** `aiprodweekly` (update when account created)
+**Buttondown Username:** `theaireframe` (update when account created)
 
 ---
 
@@ -12,7 +12,7 @@ Works anywhere. Minimal styling—inherits from parent site.
 
 ```html
 <form
-  action="https://buttondown.email/api/emails/embed-subscribe/aiprodweekly"
+  action="https://buttondown.email/api/emails/embed-subscribe/theaireframe"
   method="post"
   target="popupwindow"
   class="newsletter-form"
@@ -44,7 +44,7 @@ export function NewsletterSignup() {
     setStatus('loading');
 
     try {
-      const res = await fetch('https://buttondown.email/api/emails/embed-subscribe/aiprodweekly', {
+      const res = await fetch('https://buttondown.email/api/emails/embed-subscribe/theaireframe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams({ email }),
@@ -104,7 +104,7 @@ For: premium-claude-code-recipes, ai-control-framework READMEs
 
 Get weekly AI productivity tips, automations, and insights.
 
-**[Subscribe to AI Productivity Weekly →](https://aiprodweekly.com)**
+**[Subscribe to The AI Reframe →](https://theaireframe.com)**
 
 *One email every Thursday. No spam.*
 
@@ -119,9 +119,9 @@ Compact version for site footers:
 
 ```html
 <div class="footer-newsletter">
-  <p><strong>AI Productivity Weekly</strong></p>
+  <p><strong>The AI Reframe</strong></p>
   <p>Weekly tips for working smarter with AI.</p>
-  <form action="https://buttondown.email/api/emails/embed-subscribe/aiprodweekly" method="post">
+  <form action="https://buttondown.email/api/emails/embed-subscribe/theaireframe" method="post">
     <input type="email" name="email" placeholder="Email" required>
     <button type="submit">→</button>
   </form>
@@ -165,7 +165,7 @@ For high-traffic pages. Use with libraries like `react-exit-intent` or vanilla J
     <button class="popup-close">&times;</button>
     <h3>Before you go...</h3>
     <p>Get weekly AI automation tips for free.</p>
-    <form action="https://buttondown.email/api/emails/embed-subscribe/aiprodweekly" method="post">
+    <form action="https://buttondown.email/api/emails/embed-subscribe/theaireframe" method="post">
       <input type="email" name="email" placeholder="you@example.com" required>
       <button type="submit">Subscribe Free</button>
     </form>
@@ -200,7 +200,7 @@ Add `?source=` parameter to track where subscribers come from:
 
 Or append to the form action:
 ```
-action="https://buttondown.email/api/emails/embed-subscribe/aiprodweekly?tag=learningai"
+action="https://buttondown.email/api/emails/embed-subscribe/theaireframe?tag=learningai"
 ```
 
 ---
@@ -208,7 +208,7 @@ action="https://buttondown.email/api/emails/embed-subscribe/aiprodweekly?tag=lea
 ## Testing Checklist
 
 Before going live:
-- [ ] Create Buttondown account with username `aiprodweekly`
+- [ ] Create Buttondown account with username `theaireframe`
 - [ ] Verify form submission works (test with your email)
 - [ ] Check confirmation email is sent
 - [ ] Test on mobile devices

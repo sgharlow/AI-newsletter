@@ -1,4 +1,4 @@
-# AI Productivity Weekly — Issue #4
+# The AI Reframe — Issue #4
 
 **Subject Line:** Write client reports in 5 minutes (not 45)
 
@@ -139,4 +139,4 @@ P.S. What report do you hate writing the most? Reply and tell me—I might autom
 
 ---
 
-*You're receiving this because you signed up at aiprodweekly.com. [Unsubscribe here](#)*
+*You're receiving this because you signed up at theaireframe.com. [Unsubscribe here](#)*

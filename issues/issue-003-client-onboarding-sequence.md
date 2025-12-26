@@ -1,4 +1,4 @@
-# AI Productivity Weekly — Issue #3
+# The AI Reframe — Issue #3
 
 **Subject Line:** The 7-day client onboarding sequence that runs itself
 
@@ -113,4 +113,4 @@ P.S. Want to see my actual onboarding emails? Reply with "ONBOARDING" and I'll s
 
 ---
 
-*You're receiving this because you signed up at aiprodweekly.com. [Unsubscribe here](#)*
+*You're receiving this because you signed up at theaireframe.com. [Unsubscribe here](#)*

@@ -1,7 +1,7 @@
 # 10 AI Automations for Consultants
 ## Save 10+ hours per week without hiring
 
-*A practical guide from AI Productivity Weekly*
+*A practical guide from The AI Reframe*
 
 ---
 
@@ -220,14 +220,14 @@ Based on these discovery notes, draft a proposal outline:
 
 **Want step-by-step guides for each automation?**
 
-Subscribe to AI Productivity Weekly. Every Thursday:
+Subscribe to The AI Reframe. Every Thursday:
 - One automation you can implement
 - One AI insight worth knowing
 - One tool that saves time
 
-**Join at aiprodweekly.com**
+**Join at theaireframe.com**
 
 ---
 
-*Created by Steve | AI Productivity Weekly*
-*aiprodweekly.com*
+*Created by Steve | The AI Reframe*
+*theaireframe.com*
