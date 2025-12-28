@@ -1,4 +1,4 @@
-# The AI Reframe — Unified Newsletter Concept
+# AI Prod Weekly — Unified Newsletter Concept
 
 **Purpose:** A single newsletter that serves all 7 products, builds audience, establishes authority, and creates cross-selling opportunities.
 
@@ -12,13 +12,13 @@
 
 | Name | Vibe | Domain Check Needed |
 |------|------|---------------------|
-| **The AI Reframe** | Professional, clear | aiproductivityweekly.com |
+| **AI Prod Weekly** | Professional, clear | aiprodweekly.com |
 | **The AI Edge** | Competitive advantage | theaiedge.com |
 | **10x with AI** | Outcome-focused | 10xwithai.com |
 | **The Intelligent Worker** | Sophisticated | intelligentworker.com |
 | **AI Ops Weekly** | Technical, concise | aiopsweekly.com |
 
-**Recommended:** "The AI Reframe" — clear, SEO-friendly, describes exactly what it is.
+**Recommended:** "AI Prod Weekly" — clear, SEO-friendly, describes exactly what it is.
 
 ---
 
@@ -55,7 +55,7 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  AI PRODUCTIVITY WEEKLY — Issue #XX                             │
+│  AI PROD WEEKLY — Issue #XX                             │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
 │  📧 OPENER (50 words)                                           │
@@ -142,7 +142,7 @@
 
 ```
 ═══════════════════════════════════════════════════════════════════
-AI PRODUCTIVITY WEEKLY
+AI PROD WEEKLY
 Issue #7 — January 16, 2025
 ═══════════════════════════════════════════════════════════════════
 
@@ -247,7 +247,7 @@ See you next Thursday,
 Steve
 
 ───────────────────────────────────────────────────────────────────
-The AI Reframe
+AI Prod Weekly
 Unsubscribe | Update preferences | Read online
 ═══════════════════════════════════════════════════════════════════
 ```
@@ -282,9 +282,9 @@ Unsubscribe | Update preferences | Read online
 
 ## Tech Stack Recommendation
 
-### Email Platform: **Buttondown** (Already integrated)
+### Email Platform: **Supabase** (Already integrated)
 
-**Why Buttondown:**
+**Why Supabase:**
 - Already connected to ai-automation-recipes
 - Clean, minimal, respects readers
 - Good for technical/professional audience
@@ -303,7 +303,7 @@ Unsubscribe | Update preferences | Read online
 │  ────────                   ────────              ─────────     │
 │                                                                 │
 │  ┌─────────────┐           ┌──────────┐         ┌──────────┐   │
-│  │ All 7 sites │ ────────► │Buttondown│ ──────► │ Opens    │   │
+│  │ All 7 sites │ ────────► │Supabase│ ──────► │ Opens    │   │
 │  │ (signup     │           │ (or      │         │ Clicks   │   │
 │  │  forms)     │           │  Resend) │         │ Unsubs   │   │
 │  └─────────────┘           └──────────┘         └──────────┘   │
@@ -381,11 +381,11 @@ This enables targeted product announcements later.
 ## Launch Checklist
 
 ### Phase 1: Setup (Week 1)
-- [ ] Choose final name (recommend: "The AI Reframe")
-- [ ] Set up Buttondown account (or use existing)
+- [ ] Choose final name (recommend: "AI Prod Weekly")
+- [ ] Set up Supabase account (or use existing)
 - [ ] Create welcome email sequence (3 emails)
 - [ ] Design email template (simple, text-focused)
-- [ ] Create landing page: aiproductivityweekly.com (or subdomain)
+- [ ] Create landing page: aiprodweekly.com (or subdomain)
 
 ### Phase 2: Lead Magnets (Week 2)
 - [ ] Create "10 Automations for Consultants" PDF
@@ -438,7 +438,7 @@ This enables targeted product announcements later.
 **Subject:** You're in. Here's what to expect.
 
 ```
-Welcome to The AI Reframe.
+Welcome to AI Prod Weekly.
 
 Every Thursday, you'll get:
 • One automation you can implement
@@ -511,7 +511,7 @@ Steve
 
 ## Next Steps
 
-1. **Decide on name** — "The AI Reframe" recommended
+1. **Decide on name** — "AI Prod Weekly" recommended
 2. **Create landing page** — Simple, one-field signup
 3. **Write first 4 issues** — Bank content before launch
 4. **Create 2-3 lead magnets** — PDF downloads

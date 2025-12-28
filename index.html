@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The AI Reframe — Rethink how you work with AI</title>
-  <meta name="description" content="Weekly AI automation tips, insights, and tools for consultants and knowledge workers. Reframe your relationship with AI. Every Thursday.">
-  <meta name="keywords" content="AI newsletter, productivity, automation, consultants, AI reframe, AI tools">
+  <title>AI Prod Weekly — AI Productivity for Consultants</title>
+  <meta name="description" content="Weekly AI automation tips, insights, and tools for consultants and knowledge workers. Boost your productivity with AI. Every Thursday.">
+  <meta name="keywords" content="AI newsletter, productivity, automation, consultants, AI productivity, weekly, AI tools">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="The AI Reframe">
-  <meta property="og:description" content="Reframe your relationship with AI. Weekly.">
+  <meta property="og:title" content="AI Prod Weekly">
+  <meta property="og:description" content="AI productivity tips for consultants. Weekly.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://theaireframe.com">
+  <meta property="og:url" content="https://aiprodweekly.com">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The AI Reframe">
-  <meta name="twitter:description" content="Rethink how you work with AI. Weekly insights for consultants.">
+  <meta name="twitter:title" content="AI Prod Weekly">
+  <meta name="twitter:description" content="AI productivity tips for consultants. Weekly insights you can use.">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
@@ -392,7 +392,7 @@
 <body>
   <header>
     <div class="container">
-      <a href="/" class="logo">The AI Reframe</a>
+      <a href="/" class="logo">AI Prod Weekly</a>
     </div>
   </header>
 
@@ -401,23 +401,18 @@
     <section class="hero">
       <div class="container">
         <h1>
-          Reframe how you work with AI.
+          Boost your productivity with AI.
           <span>Every Thursday.</span>
         </h1>
         <p class="subheadline">
           One automation you can implement. One insight worth knowing.
           No fluff. Just practical AI productivity for consultants and knowledge workers.
         </p>
-        <form
-          action="https://buttondown.email/api/emails/embed-subscribe/theaireframe"
-          method="post"
-          target="popupwindow"
-          class="signup-form"
-        >
+        <form class="signup-form" id="hero-form" onsubmit="return handleSubscribe(event, 'hero')">
           <input type="email" name="email" placeholder="you@example.com" required>
           <button type="submit">Subscribe Free</button>
         </form>
-        <p class="trust-line">Join consultants reframing their AI approach. Unsubscribe anytime.</p>
+        <p class="trust-line" id="hero-message">Join consultants boosting their AI productivity. Unsubscribe anytime.</p>
       </div>
     </section>
 
@@ -450,7 +445,7 @@
       <div class="container">
         <h2>Here's what a typical issue looks like:</h2>
         <div class="sample-box">
-          <div class="issue-header">The AI Reframe — Issue #7</div>
+          <div class="issue-header">AI Prod Weekly — Issue #7</div>
           <div class="section-title">&#128295; THIS WEEK'S AUTOMATION: Invoice Follow-Up Sequence</div>
           <p><strong>The problem:</strong> Chasing unpaid invoices is awkward.</p>
           <p><strong>The solution:</strong> A 3-email sequence that runs automatically when invoices hit 7, 14, and 30 days overdue.</p>
@@ -500,23 +495,18 @@
     <section class="cta">
       <div class="container">
         <h2>Ready to work smarter?</h2>
-        <form
-          action="https://buttondown.email/api/emails/embed-subscribe/theaireframe"
-          method="post"
-          target="popupwindow"
-          class="signup-form"
-        >
+        <form class="signup-form" id="cta-form" onsubmit="return handleSubscribe(event, 'cta')">
           <input type="email" name="email" placeholder="you@example.com" required>
           <button type="submit">Subscribe Free</button>
         </form>
-        <p class="trust-line">No spam. Unsubscribe anytime.</p>
+        <p class="trust-line" id="cta-message">No spam. Unsubscribe anytime.</p>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="container">
-      <div class="footer-brand">The AI Reframe</div>
+      <div class="footer-brand">AI Prod Weekly</div>
       <div class="footer-tagline">A weekly newsletter for consultants and knowledge workers.</div>
       <div class="footer-links">
         <a href="/privacy">Privacy Policy</a>
@@ -524,5 +514,56 @@
       <div class="footer-copyright">&copy; 2025</div>
     </div>
   </footer>
+
+  <script>
+    const SUPABASE_URL = 'https://xitfncljhfdqvnzakbwl.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhpdGZuY2xqaGZkcXZuemFrYndsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ0NjM0ODYsImV4cCI6MjA4MDAzOTQ4Nn0.-p64B2Qjn_vOzy-QKIGoNgGFcfysm-7ozTUl_zgspcQ';
+
+    async function handleSubscribe(event, formId) {
+      event.preventDefault();
+      const form = document.getElementById(formId + '-form');
+      const messageEl = document.getElementById(formId + '-message');
+      const email = form.querySelector('input[type="email"]').value;
+      const button = form.querySelector('button');
+      
+      button.disabled = true;
+      button.textContent = 'Subscribing...';
+      
+      try {
+        const response = await fetch(SUPABASE_URL + '/rest/v1/newsletter_subscribers', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': SUPABASE_ANON_KEY,
+            'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify({ 
+            email: email,
+            source: 'aiprodweekly.com'
+          })
+        });
+        
+        if (response.ok || response.status === 201) {
+          form.innerHTML = '<p style="color: #16a34a; font-weight: 600;">You are in! Check your inbox Thursday.</p>';
+          messageEl.style.display = 'none';
+        } else if (response.status === 409) {
+          messageEl.textContent = 'You are already subscribed!';
+          messageEl.style.color = '#2563eb';
+          button.disabled = false;
+          button.textContent = 'Subscribe Free';
+        } else {
+          throw new Error('Signup failed');
+        }
+      } catch (error) {
+        messageEl.textContent = 'Something went wrong. Please try again.';
+        messageEl.style.color = '#dc2626';
+        button.disabled = false;
+        button.textContent = 'Subscribe Free';
+      }
+      
+      return false;
+    }
+  </script>
 </body>
 </html>

@@ -1,6 +1,6 @@
-# The AI Reframe — Landing Page Copy
+# AI Prod Weekly — Landing Page Copy
 
-**Domain:** theaireframe.com
+**Domain:** aiprodweekly.com
 **Purpose:** Email capture for newsletter subscribers
 **Style:** Clean, minimal, professional — no hype
 
@@ -99,7 +99,7 @@ Here's what a typical issue looks like:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-AI PRODUCTIVITY WEEKLY — Issue #7
+AI PROD WEEKLY — Issue #7
 
 🔧 THIS WEEK'S AUTOMATION: Invoice Follow-Up Sequence
 
@@ -178,7 +178,7 @@ No spam. Unsubscribe anytime.
 ## Footer
 
 ```
-The AI Reframe
+AI Prod Weekly
 A weekly newsletter for consultants and knowledge workers.
 
 [Privacy Policy] [Unsubscribe]
@@ -195,19 +195,19 @@ A weekly newsletter for consultants and knowledge workers.
 | Component | Tool | Why |
 |-----------|------|-----|
 | Hosting | Vercel or Cloudflare Pages | Free, fast, simple |
-| Email | Buttondown | Already integrated, clean |
+| Email | Supabase | Already integrated, clean |
 | Framework | Single HTML or Next.js | Keep it simple |
 | Analytics | Plausible or none | Privacy-friendly |
 
 ## Form Integration
 
-Buttondown embed code:
+Supabase embed code:
 ```html
 <form
-  action="https://buttondown.email/api/emails/embed-subscribe/YOUR_USERNAME"
+  action="https://aiprodweekly.com/api/emails/embed-subscribe/YOUR_USERNAME"
   method="post"
   target="popupwindow"
-  class="embeddable-buttondown-form"
+  class="embeddable-supabase-form"
 >
   <input type="email" name="email" placeholder="you@example.com" required />
   <button type="submit">Subscribe Free</button>
@@ -220,7 +220,7 @@ Buttondown embed code:
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>The AI Reframe — Work smarter with AI</title>
+  <title>AI Prod Weekly — Work smarter with AI</title>
   <meta name="description" content="Weekly AI automation tips, insights, and tools for consultants and knowledge workers. One email, every Thursday.">
 </head>
 <body>
@@ -262,19 +262,19 @@ Buttondown embed code:
 # SEO Metadata
 
 ```html
-<title>The AI Reframe — Work smarter with AI</title>
+<title>AI Prod Weekly — Work smarter with AI</title>
 <meta name="description" content="Weekly AI automation tips, insights, and tools for consultants and knowledge workers. One email, every Thursday. Free.">
 <meta name="keywords" content="AI newsletter, productivity, automation, consultants, n8n, AI tools">
 
 <!-- Open Graph -->
-<meta property="og:title" content="The AI Reframe">
+<meta property="og:title" content="AI Prod Weekly">
 <meta property="og:description" content="One automation. One insight. Every Thursday.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://theaireframe.com">
+<meta property="og:url" content="https://aiprodweekly.com">
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="The AI Reframe">
+<meta name="twitter:title" content="AI Prod Weekly">
 <meta name="twitter:description" content="Weekly AI automation tips for consultants. No fluff.">
 ```
 
@@ -308,7 +308,7 @@ respects your time.
 
 ## Option E (Direct)
 ```
-The AI Reframe
+AI Prod Weekly
 One automation. One insight. Every Thursday.
 ```
 

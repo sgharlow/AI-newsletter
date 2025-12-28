@@ -2,30 +2,66 @@
 
 Ready-to-use signup forms for embedding in all 8 products.
 
-**Buttondown Username:** `theaireframe` (update when account created)
+**Backend:** Supabase (mindtempo project)
+**Domain:** aiprodweekly.com
 
 ---
 
 ## 1. Basic HTML Form (Universal)
 
-Works anywhere. Minimal styling—inherits from parent site.
+Works anywhere. Requires the JavaScript snippet below.
 
 ```html
-<form
-  action="https://buttondown.email/api/emails/embed-subscribe/theaireframe"
-  method="post"
-  target="popupwindow"
-  class="newsletter-form"
->
+<form class="newsletter-form" onsubmit="return handleNewsletterSignup(event, this)">
   <input type="email" name="email" placeholder="you@example.com" required>
   <button type="submit">Subscribe Free</button>
   <p class="newsletter-note">Weekly AI productivity tips. Unsubscribe anytime.</p>
 </form>
+
+<script>
+const SUPABASE_URL = 'https://xitfncljhfdqvnzakbwl.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhpdGZuY2xqaGZkcXZuemFrYndsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ0NjM0ODYsImV4cCI6MjA4MDAzOTQ4Nn0.-p64B2Qjn_vOzy-QKIGoNgGFcfysm-7ozTUl_zgspcQ';
+
+async function handleNewsletterSignup(event, form) {
+  event.preventDefault();
+  const email = form.querySelector('input[type="email"]').value;
+  const button = form.querySelector('button');
+  const source = form.dataset.source || window.location.hostname;
+  
+  button.disabled = true;
+  button.textContent = 'Subscribing...';
+  
+  try {
+    const response = await fetch(SUPABASE_URL + '/rest/v1/newsletter_subscribers', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({ email, source })
+    });
+    
+    if (response.ok || response.status === 201) {
+      form.innerHTML = '<p style="color: #16a34a;">You're in! Check your inbox Thursday.</p>';
+    } else if (response.status === 409) {
+      form.innerHTML = '<p style="color: #2563eb;">You're already subscribed!</p>';
+    } else {
+      throw new Error('Failed');
+    }
+  } catch (e) {
+    button.disabled = false;
+    button.textContent = 'Try Again';
+  }
+  return false;
+}
+</script>
 ```
 
 ---
 
-## 2. React Component (Next.js Projects)
+## 2. React/Next.js Component
 
 For: learningai, second-brain, ai-automation-recipes
 
@@ -35,24 +71,37 @@ For: learningai, second-brain, ai-automation-recipes
 
 import { useState } from 'react';
 
-export function NewsletterSignup() {
+const SUPABASE_URL = 'https://xitfncljhfdqvnzakbwl.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhpdGZuY2xqaGZkcXZuemFrYndsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ0NjM0ODYsImV4cCI6MjA4MDAzOTQ4Nn0.-p64B2Qjn_vOzy-QKIGoNgGFcfysm-7ozTUl_zgspcQ';
+
+interface Props {
+  source?: string;
+}
+
+export function NewsletterSignup({ source = 'website' }: Props) {
   const [email, setEmail] = useState('');
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'exists' | 'error'>('idle');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
 
     try {
-      const res = await fetch('https://buttondown.email/api/emails/embed-subscribe/theaireframe', {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/newsletter_subscribers`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams({ email }),
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`,
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({ email, source })
       });
 
-      if (res.ok) {
+      if (res.ok || res.status === 201) {
         setStatus('success');
-        setEmail('');
+      } else if (res.status === 409) {
+        setStatus('exists');
       } else {
         setStatus('error');
       }
@@ -62,11 +111,11 @@ export function NewsletterSignup() {
   };
 
   if (status === 'success') {
-    return (
-      <div className="newsletter-success">
-        <p>Check your email to confirm your subscription.</p>
-      </div>
-    );
+    return <p className="text-green-600 font-semibold">You're in! Check your inbox Thursday.</p>;
+  }
+  
+  if (status === 'exists') {
+    return <p className="text-blue-600">You're already subscribed!</p>;
   }
 
   return (
@@ -82,9 +131,7 @@ export function NewsletterSignup() {
       <button type="submit" disabled={status === 'loading'}>
         {status === 'loading' ? 'Subscribing...' : 'Subscribe Free'}
       </button>
-      {status === 'error' && (
-        <p className="newsletter-error">Something went wrong. Try again.</p>
-      )}
+      {status === 'error' && <p className="text-red-600">Something went wrong. Try again.</p>}
       <p className="newsletter-note">Weekly AI productivity tips. Unsubscribe anytime.</p>
     </form>
   );
@@ -104,7 +151,7 @@ For: premium-claude-code-recipes, ai-control-framework READMEs
 
 Get weekly AI productivity tips, automations, and insights.
 
-**[Subscribe to The AI Reframe →](https://theaireframe.com)**
+**[Subscribe to AI Prod Weekly →](https://aiprodweekly.com)**
 
 *One email every Thursday. No spam.*
 
@@ -113,65 +160,23 @@ Get weekly AI productivity tips, automations, and insights.
 
 ---
 
-## 4. Footer Widget (All Products)
+## 4. Tracking Sources
 
-Compact version for site footers:
-
-```html
-<div class="footer-newsletter">
-  <p><strong>The AI Reframe</strong></p>
-  <p>Weekly tips for working smarter with AI.</p>
-  <form action="https://buttondown.email/api/emails/embed-subscribe/theaireframe" method="post">
-    <input type="email" name="email" placeholder="Email" required>
-    <button type="submit">→</button>
-  </form>
-</div>
-```
-
-CSS:
-```css
-.footer-newsletter {
-  max-width: 300px;
-}
-.footer-newsletter form {
-  display: flex;
-  gap: 8px;
-}
-.footer-newsletter input {
-  flex: 1;
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-.footer-newsletter button {
-  padding: 8px 16px;
-  background: #2563eb;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-```
-
----
-
-## 5. Exit Intent Popup (Optional)
-
-For high-traffic pages. Use with libraries like `react-exit-intent` or vanilla JS:
+Add `data-source` attribute to track where subscribers come from:
 
 ```html
-<div id="exit-popup" class="popup hidden">
-  <div class="popup-content">
-    <button class="popup-close">&times;</button>
-    <h3>Before you go...</h3>
-    <p>Get weekly AI automation tips for free.</p>
-    <form action="https://buttondown.email/api/emails/embed-subscribe/theaireframe" method="post">
-      <input type="email" name="email" placeholder="you@example.com" required>
-      <button type="submit">Subscribe Free</button>
-    </form>
-  </div>
-</div>
+<form class="newsletter-form" data-source="learningai" onsubmit="return handleNewsletterSignup(event, this)">
 ```
+
+Available sources:
+- `aiprodweekly.com` (landing page)
+- `learningai` 
+- `second-brain`
+- `ai-automation-recipes`
+- `premium-claude-code-recipes`
+- `ai-control-framework`
+- `adapt-learn`
+- `ender-book`
 
 ---
 
@@ -179,6 +184,7 @@ For high-traffic pages. Use with libraries like `react-exit-intent` or vanilla J
 
 | Product | Location | Type | Status |
 |---------|----------|------|--------|
+| AI-newsletter | Landing page | HTML | [x] Done |
 | learningai | Footer + Course pages | React | [ ] |
 | second-brain | Settings + Footer | React | [ ] |
 | ai-automation-recipes | Homepage + Blog | React | [ ] |
@@ -186,30 +192,19 @@ For high-traffic pages. Use with libraries like `react-exit-intent` or vanilla J
 | ai-control-framework | README + Docs | Markdown | [ ] |
 | adapt-learn | Landing page | HTML | [ ] |
 | ender-ai-leadership | Book website | HTML | [ ] |
-| AI-newsletter | Landing page | HTML | [x] Done |
 
 ---
 
-## Tracking Sources
+## Supabase Table
 
-Add `?source=` parameter to track where subscribers come from:
+Subscribers are stored in: `mindtempo` project → `newsletter_subscribers` table
 
-```html
-<input type="hidden" name="tag" value="learningai">
-```
-
-Or append to the form action:
-```
-action="https://buttondown.email/api/emails/embed-subscribe/theaireframe?tag=learningai"
-```
-
----
-
-## Testing Checklist
-
-Before going live:
-- [ ] Create Buttondown account with username `theaireframe`
-- [ ] Verify form submission works (test with your email)
-- [ ] Check confirmation email is sent
-- [ ] Test on mobile devices
-- [ ] Verify analytics/tracking works
+Columns:
+- `id` (uuid)
+- `email` (text, unique)
+- `source` (text)
+- `subscribed_at` (timestamptz)
+- `confirmed_at` (timestamptz, nullable)
+- `unsubscribed_at` (timestamptz, nullable)
+- `tags` (text[])
+- `metadata` (jsonb)

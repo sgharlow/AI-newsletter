@@ -1,4 +1,4 @@
-# The AI Reframe
+# AI Prod Weekly
 
 A unified newsletter connecting all projects in the AI Productivity Ecosystem.
 
@@ -25,7 +25,7 @@ This newsletter serves as the connective tissue between:
 ## Quick Links
 
 - Landing page: TBD
-- Email platform: Buttondown (already integrated with ai-automation-recipes)
+- Email platform: Supabase (already integrated with ai-automation-recipes)
 
 ## Next Steps
 

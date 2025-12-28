@@ -1,4 +1,4 @@
-# The AI Reframe — Issue #2
+# AI Prod Weekly — Issue #2
 
 **Subject Line:** Never forget a meeting action item again (10-min setup)
 
@@ -110,4 +110,4 @@ P.S. Reply and tell me: what's your biggest time sink as a consultant? I might f
 
 ---
 
-*You're receiving this because you signed up at theaireframe.com. [Unsubscribe here](#)*
+*You're receiving this because you signed up at aiprodweekly.com. [Unsubscribe here](#)*
