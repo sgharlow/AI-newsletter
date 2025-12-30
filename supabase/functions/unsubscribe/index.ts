@@ -55,7 +55,7 @@ const UNSUBSCRIBE_SUCCESS_HTML = `
     <h1>You've been unsubscribed</h1>
     <p>We're sorry to see you go. You won't receive any more emails from AI Prod Weekly.</p>
     <p>Changed your mind?</p>
-    <a href="https://aiprodweekly.com" class="resubscribe">Resubscribe</a>
+    <a href="https://aiprodweekly.com/api/resubscribe" class="resubscribe">Resubscribe</a>
   </div>
 </body>
 </html>
