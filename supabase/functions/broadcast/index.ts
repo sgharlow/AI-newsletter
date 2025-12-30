@@ -4,6 +4,7 @@
 
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { renderTemplate, getTemplateNames, TemplateVariables } from "./templates.ts";
 
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
@@ -17,7 +18,9 @@ const corsHeaders = {
 
 interface BroadcastRequest {
   subject: string;
-  html: string;
+  html?: string; // Raw HTML (optional if using template)
+  template?: string; // Template name: weekly_issue, announcement, notification, digest
+  variables?: TemplateVariables; // Variables to pass to template
   text?: string;
   test_email?: string; // If provided, only send to this email (for testing)
   source_filter?: string; // Optional: only send to subscribers from this source
@@ -73,10 +76,26 @@ serve(async (req) => {
     }
 
     const body: BroadcastRequest = await req.json();
-    const { subject, html, text, test_email, source_filter, secret } = body;
+    const { subject, html, template, variables, text, test_email, source_filter, secret } = body;
 
-    if (!subject || !html) {
-      throw new Error("Missing required fields: subject and html");
+    if (!subject) {
+      throw new Error("Missing required field: subject");
+    }
+
+    if (!html && !template) {
+      throw new Error("Must provide either 'html' or 'template'. Available templates: " + getTemplateNames().join(", "));
+    }
+
+    // Render template if specified, otherwise use raw HTML
+    let emailHtml: string;
+    if (template) {
+      try {
+        emailHtml = renderTemplate(template, variables || {});
+      } catch (error) {
+        throw new Error(`Template error: ${error.message}`);
+      }
+    } else {
+      emailHtml = html!;
     }
 
     // Security check: require secret for non-test sends
@@ -88,13 +107,16 @@ serve(async (req) => {
 
     // Test mode: send to single email
     if (test_email) {
-      const result = await sendEmail(test_email, `[TEST] ${subject}`, html, text);
+      // Replace subscriber_id placeholder for test
+      const testHtml = emailHtml.replace(/{{subscriber_id}}/g, "test-subscriber-id");
+      const result = await sendEmail(test_email, `[TEST] ${subject}`, testHtml, text);
       return new Response(
         JSON.stringify({
           success: true,
           mode: "test",
           sent_to: test_email,
           email_id: result.id,
+          template_used: template || null,
         }),
         {
           headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -144,14 +166,13 @@ serve(async (req) => {
 
       const batchPromises = batch.map(async (subscriber) => {
         try {
-          // Add unsubscribe link to HTML
-          const unsubscribeUrl = `https://aiprodweekly.com/unsubscribe?id=${subscriber.id}`;
-          const htmlWithUnsubscribe = html.replace(
-            /{{unsubscribe_url}}/g,
-            unsubscribeUrl
-          );
+          // Replace subscriber_id placeholder and legacy unsubscribe_url
+          const unsubscribeUrl = `https://aiprodweekly.com/api/unsubscribe?id=${subscriber.id}`;
+          let personalizedHtml = emailHtml
+            .replace(/{{subscriber_id}}/g, subscriber.id)
+            .replace(/{{unsubscribe_url}}/g, unsubscribeUrl);
 
-          await sendEmail(subscriber.email, subject, htmlWithUnsubscribe, text);
+          await sendEmail(subscriber.email, subject, personalizedHtml, text);
           return { email: subscriber.email, success: true };
         } catch (error) {
           console.error(`Failed to send to ${subscriber.email}:`, error);
@@ -178,6 +199,7 @@ serve(async (req) => {
       sent_count: results.filter((r) => r.success).length,
       failed_count: results.filter((r) => !r.success).length,
       source_filter: source_filter || null,
+      template_used: template || null,
     });
 
     const successful = results.filter((r) => r.success);
@@ -187,6 +209,7 @@ serve(async (req) => {
       JSON.stringify({
         success: true,
         mode: "broadcast",
+        template_used: template || null,
         total_subscribers: subscribers.length,
         sent: successful.length,
         failed: failed.length,

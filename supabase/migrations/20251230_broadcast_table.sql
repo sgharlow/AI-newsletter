@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS newsletter_broadcasts (
   sent_count INTEGER NOT NULL DEFAULT 0,
   failed_count INTEGER NOT NULL DEFAULT 0,
   source_filter TEXT,
+  template_used TEXT,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
