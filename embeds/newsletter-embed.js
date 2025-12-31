@@ -5,11 +5,45 @@
  * Usage:
  *   <div id="aipw-signup" data-source="learningai"></div>
  *   <script src="https://aiprodweekly.com/embeds/newsletter-embed.js"></script>
+ *
+ * Analytics tracked:
+ *   - view: form rendered on page
+ *   - focus: user clicked email input
+ *   - submit: form submitted
+ *   - success: signup completed
+ *   - error: signup failed
+ *   - exists: already subscribed
  */
 
 (function() {
   const SUPABASE_URL = 'https://xitfncljhfdqvnzakbwl.supabase.co';
   const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhpdGZuY2xqaGZkcXZuemFrYndsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ0NjM0ODYsImV4cCI6MjA4MDAzOTQ4Nn0.-p64B2Qjn_vOzy-QKIGoNgGFcfysm-7ozTUl_zgspcQ';
+
+  // Analytics tracking function
+  function trackEvent(event, source, metadata = {}) {
+    try {
+      // Fire-and-forget analytics
+      fetch(SUPABASE_URL + '/rest/v1/newsletter_analytics', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({
+          event: event,
+          source: source,
+          page_url: window.location.href,
+          referrer: document.referrer || null,
+          user_agent: navigator.userAgent,
+          metadata: metadata
+        })
+      }).catch(function() {}); // Silently ignore errors
+    } catch (e) {
+      // Analytics should never break the form
+    }
+  }
 
   // Find all signup containers
   const containers = document.querySelectorAll('[id="aipw-signup"], [data-aipw-signup]');
@@ -153,14 +187,30 @@
 
     container.innerHTML = html;
 
+    // Track form view
+    trackEvent('view', source, { formId: formId });
+
     // Handle form submission
     const form = document.getElementById(formId);
     const msgEl = document.getElementById(formId + '-msg');
+    const input = form.querySelector('input');
+
+    // Track input focus (user engagement)
+    let focusTracked = false;
+    input.addEventListener('focus', function() {
+      if (!focusTracked) {
+        trackEvent('focus', source, { formId: formId });
+        focusTracked = true;
+      }
+    });
 
     form.addEventListener('submit', async function(e) {
       e.preventDefault();
-      const email = form.querySelector('input').value;
+      const email = input.value;
       const button = form.querySelector('button');
+
+      // Track form submission
+      trackEvent('submit', source, { formId: formId });
 
       button.disabled = true;
       button.textContent = 'Subscribing...';
@@ -181,9 +231,13 @@
         });
 
         if (response.ok || response.status === 201) {
+          // Track successful signup
+          trackEvent('success', source, { formId: formId });
           form.innerHTML = '<p class="aipw-success">You\'re in! Check your inbox Thursday.</p>';
           msgEl.style.display = 'none';
         } else if (response.status === 409) {
+          // Track already exists
+          trackEvent('exists', source, { formId: formId });
           msgEl.textContent = 'You\'re already subscribed!';
           msgEl.className = 'aipw-trust aipw-already';
           button.disabled = false;
@@ -192,6 +246,8 @@
           throw new Error('Signup failed');
         }
       } catch (error) {
+        // Track error
+        trackEvent('error', source, { formId: formId, error: error.message || 'Unknown error' });
         msgEl.textContent = 'Something went wrong. Please try again.';
         msgEl.className = 'aipw-trust aipw-error';
         button.disabled = false;

@@ -195,8 +195,9 @@ Available sources:
 
 ---
 
-## Supabase Table
+## Supabase Tables
 
+### newsletter_subscribers
 Subscribers are stored in: `mindtempo` project → `newsletter_subscribers` table
 
 Columns:
@@ -208,3 +209,42 @@ Columns:
 - `unsubscribed_at` (timestamptz, nullable)
 - `tags` (text[])
 - `metadata` (jsonb)
+
+### newsletter_analytics
+Tracks embed form interactions for conversion analysis.
+
+Columns:
+- `id` (uuid)
+- `event` (text) - view, focus, submit, success, error, exists
+- `source` (text) - which product the form is on
+- `page_url` (text) - full URL where form was shown
+- `referrer` (text) - where user came from
+- `user_agent` (text) - browser info
+- `metadata` (jsonb) - additional context
+- `created_at` (timestamptz)
+
+**Analytics Events:**
+| Event | Description |
+|-------|-------------|
+| `view` | Form rendered on page |
+| `focus` | User clicked into email input |
+| `submit` | Form submitted |
+| `success` | Signup completed |
+| `error` | Signup failed |
+| `exists` | Email already subscribed |
+
+**Example Query - Conversion Funnel:**
+```sql
+SELECT
+  source,
+  COUNT(*) FILTER (WHERE event = 'view') as views,
+  COUNT(*) FILTER (WHERE event = 'focus') as engaged,
+  COUNT(*) FILTER (WHERE event = 'submit') as attempts,
+  COUNT(*) FILTER (WHERE event = 'success') as signups,
+  ROUND(100.0 * COUNT(*) FILTER (WHERE event = 'success') /
+        NULLIF(COUNT(*) FILTER (WHERE event = 'view'), 0), 2) as conversion_rate
+FROM newsletter_analytics
+WHERE created_at > NOW() - INTERVAL '7 days'
+GROUP BY source
+ORDER BY signups DESC;
+```
