@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Archive — AI Prod Weekly</title>
+  <meta name="description" content="Browse all past issues of AI Prod Weekly. AI automation tips and insights for consultants.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AI Prod Weekly Archive">
+  <meta property="og:description" content="Browse past issues of AI Prod Weekly">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aiprodweekly.com/archive">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+
+  <style>
+    :root {
+      --color-bg: #fafafa;
+      --color-text: #1a1a1a;
+      --color-text-muted: #666;
+      --color-primary: #2563eb;
+      --color-primary-hover: #1d4ed8;
+      --color-border: #e5e5e5;
+      --color-card-bg: #ffffff;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      --max-width: 680px;
+      --spacing: 1.5rem;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { font-size: 16px; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--spacing);
+    }
+
+    header {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--color-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-text);
+      text-decoration: none;
+    }
+    .nav-link {
+      font-size: 0.875rem;
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+    .nav-link:hover { text-decoration: underline; }
+
+    .page-header {
+      padding: 3rem 0;
+      text-align: center;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .page-header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .page-header p {
+      color: var(--color-text-muted);
+    }
+
+    .archive-list {
+      padding: 2rem 0;
+    }
+    .archive-year {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin: 2rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .archive-year:first-child { margin-top: 0; }
+
+    .issue-card {
+      display: block;
+      padding: 1.25rem;
+      margin-bottom: 0.75rem;
+      background: var(--color-card-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .issue-card:hover {
+      border-color: var(--color-primary);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .issue-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    .issue-number {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .issue-date {
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+    }
+    .issue-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.375rem;
+    }
+    .issue-preview {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+    .issue-tags {
+      margin-top: 0.75rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+    .tag {
+      font-size: 0.7rem;
+      padding: 0.25rem 0.5rem;
+      background: var(--color-bg);
+      border-radius: 4px;
+      color: var(--color-text-muted);
+    }
+
+    .subscribe-cta {
+      padding: 3rem 0;
+      text-align: center;
+      border-top: 1px solid var(--color-border);
+    }
+    .subscribe-cta h2 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .subscribe-cta p {
+      color: var(--color-text-muted);
+      margin-bottom: 1.5rem;
+    }
+    .cta-button {
+      display: inline-block;
+      padding: 0.875rem 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+      background: var(--color-primary);
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .cta-button:hover {
+      background: var(--color-primary-hover);
+    }
+
+    footer {
+      padding: 2rem 0;
+      border-top: 1px solid var(--color-border);
+      text-align: center;
+    }
+    .footer-links {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+    .footer-links a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+    .footer-links a:hover { color: var(--color-text); }
+
+    @media (max-width: 640px) {
+      .page-header { padding: 2rem 0; }
+      .page-header h1 { font-size: 1.75rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="/" class="logo">AI Prod Weekly</a>
+      <a href="/" class="nav-link">Subscribe</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h1>Newsletter Archive</h1>
+        <p>All past issues of AI Prod Weekly</p>
+      </div>
+    </section>
+
+    <section class="archive-list">
+      <div class="container">
+        <div class="archive-year">January 2026</div>
+
+        <a href="issues/issue-017-digital-twin-practice.html" class="issue-card">
+          <div class="issue-header">
+            <span class="issue-number">Issue #17</span>
+            <span class="issue-date">Jan 2, 2026</span>
+          </div>
+          <h3 class="issue-title">Build a Digital Twin of Your Practice</h3>
+          <p class="issue-preview">How to create an AI assistant that answers client questions 24/7, trained on your frameworks and methodology.</p>
+          <div class="issue-tags">
+            <span class="tag">Automation</span>
+            <span class="tag">Client Service</span>
+            <span class="tag">RAG</span>
+          </div>
+        </a>
+
+        <div class="archive-year">December 2025</div>
+
+        <a href="issues/issue-016-mcp-for-consultants.html" class="issue-card">
+          <div class="issue-header">
+            <span class="issue-number">Issue #16</span>
+            <span class="issue-date">Dec 26, 2025</span>
+          </div>
+          <h3 class="issue-title">MCP for Consultants: Connect AI to Your Tools</h3>
+          <p class="issue-preview">How the Model Context Protocol lets Claude access your spreadsheets, databases, and internal tools in real-time.</p>
+          <div class="issue-tags">
+            <span class="tag">MCP</span>
+            <span class="tag">Integration</span>
+            <span class="tag">Claude</span>
+          </div>
+        </a>
+
+        <a href="issues/issue-015.html" class="issue-card">
+          <div class="issue-header">
+            <span class="issue-number">Issue #15</span>
+            <span class="issue-date">Dec 19, 2025</span>
+          </div>
+          <h3 class="issue-title">Holiday Client Automation</h3>
+          <p class="issue-preview">Set up automated check-ins, out-of-office responders, and year-end report generators before the break.</p>
+          <div class="issue-tags">
+            <span class="tag">Automation</span>
+            <span class="tag">Email</span>
+          </div>
+        </a>
+
+        <a href="issues/issue-014.html" class="issue-card">
+          <div class="issue-header">
+            <span class="issue-number">Issue #14</span>
+            <span class="issue-date">Dec 12, 2025</span>
+          </div>
+          <h3 class="issue-title">The 2025 AI Productivity Stack</h3>
+          <p class="issue-preview">My complete tool stack for running a consulting practice with AI assistance. What worked, what didn't.</p>
+          <div class="issue-tags">
+            <span class="tag">Tools</span>
+            <span class="tag">Year Review</span>
+          </div>
+        </a>
+
+        <a href="issues/issue-013.html" class="issue-card">
+          <div class="issue-header">
+            <span class="issue-number">Issue #13</span>
+            <span class="issue-date">Dec 5, 2025</span>
+          </div>
+          <h3 class="issue-title">AI-Powered Proposal Generation</h3>
+          <p class="issue-preview">From client call notes to polished proposal in under an hour. The exact workflow I use.</p>
+          <div class="issue-tags">
+            <span class="tag">Proposals</span>
+            <span class="tag">Sales</span>
+          </div>
+        </a>
+
+        <div class="archive-year">November 2025</div>
+
+        <a href="issues/issue-012.html" class="issue-card">
+          <div class="issue-header">
+            <span class="issue-number">Issue #12</span>
+            <span class="issue-date">Nov 28, 2025</span>
+          </div>
+          <h3 class="issue-title">Meeting Note Mastery</h3>
+          <p class="issue-preview">Turn messy meeting notes into action items, follow-ups, and client updates automatically.</p>
+          <div class="issue-tags">
+            <span class="tag">Meetings</span>
+            <span class="tag">Notes</span>
+          </div>
+        </a>
+
+        <a href="issues/issue-011.html" class="issue-card">
+          <div class="issue-header">
+            <span class="issue-number">Issue #11</span>
+            <span class="issue-date">Nov 21, 2025</span>
+          </div>
+          <h3 class="issue-title">Invoice Automation That Works</h3>
+          <p class="issue-preview">Automated invoice generation, follow-ups, and payment tracking. Never chase invoices again.</p>
+          <div class="issue-tags">
+            <span class="tag">Invoicing</span>
+            <span class="tag">Finance</span>
+          </div>
+        </a>
+
+        <a href="issues/issue-010.html" class="issue-card">
+          <div class="issue-header">
+            <span class="issue-number">Issue #10</span>
+            <span class="issue-date">Nov 14, 2025</span>
+          </div>
+          <h3 class="issue-title">The Weekly Review Automation</h3>
+          <p class="issue-preview">How I automated my weekly review to take 15 minutes instead of an hour.</p>
+          <div class="issue-tags">
+            <span class="tag">Productivity</span>
+            <span class="tag">Review</span>
+          </div>
+        </a>
+
+        <!-- More issues would be listed here -->
+
+      </div>
+    </section>
+
+    <section class="subscribe-cta">
+      <div class="container">
+        <h2>Don't miss future issues</h2>
+        <p>Get AI productivity tips in your inbox every Thursday.</p>
+        <a href="/" class="cta-button">Subscribe Free</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/archive">Archive</a>
+        <a href="/privacy">Privacy</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
