@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>AI Productivity Weekly - Email Templates</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --text: #1f2937;
+      --text-light: #6b7280;
+      --bg: #f9fafb;
+      --border: #e5e7eb;
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: var(--text); margin: 0; padding: 20px; background: var(--bg); }
+    .template-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 24px; max-width: 1400px; margin: 0 auto; }
+    .template-card { background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); overflow: hidden; }
+    .template-header { padding: 16px 20px; background: var(--primary); color: white; }
+    .template-header h3 { margin: 0; font-size: 16px; }
+    .template-header p { margin: 4px 0 0; font-size: 13px; opacity: 0.9; }
+    .template-body { padding: 20px; }
+    .template-preview { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 16px; font-size: 14px; }
+    .template-vars { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+    .template-vars h4 { margin: 0 0 8px; font-size: 13px; color: var(--text-light); }
+    .var-list { display: flex; flex-wrap: wrap; gap: 6px; }
+    .var-tag { background: #dbeafe; color: #1e40af; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-family: monospace; }
+    .section-title { font-size: 24px; font-weight: 600; margin: 32px 0 16px; color: var(--text); }
+    .page-header { text-align: center; padding: 40px 20px; background: white; margin: -20px -20px 32px; border-bottom: 1px solid var(--border); }
+    .page-header h1 { margin: 0; font-size: 28px; }
+    .page-header p { margin: 8px 0 0; color: var(--text-light); }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Email Template Library</h1>
+  <p>Ready-to-use templates for AI Productivity Weekly communications</p>
+</div>
+
+<h2 class="section-title">Newsletter Templates</h2>
+
+<div class="template-grid">
+
+  <div class="template-card">
+    <div class="template-header">
+      <h3>Weekly Issue</h3>
+      <p>Main newsletter template for weekly automation tutorials</p>
+    </div>
+    <div class="template-body">
+      <div class="template-preview">
+        <strong>Subject:</strong> {{issue_title}} - Issue #{{issue_number}}<br><br>
+        <strong>Preview:</strong> {{preview_text}}<br><br>
+        <hr>
+        <p>Hey {{first_name}},</p>
+        <p>{{intro_paragraph}}</p>
+        <p><strong>This Week's Automation:</strong> {{automation_name}}</p>
+        <p>{{main_content}}</p>
+        <p>Reply with questions - I read every response.</p>
+        <p>— Shayan</p>
+      </div>
+      <div class="template-vars">
+        <h4>Variables</h4>
+        <div class="var-list">
+          <span class="var-tag">{{issue_title}}</span>
+          <span class="var-tag">{{issue_number}}</span>
+          <span class="var-tag">{{preview_text}}</span>
+          <span class="var-tag">{{first_name}}</span>
+          <span class="var-tag">{{intro_paragraph}}</span>
+          <span class="var-tag">{{automation_name}}</span>
+          <span class="var-tag">{{main_content}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="template-card">
+    <div class="template-header">
+      <h3>Welcome Sequence - Day 1</h3>
+      <p>First email after signup</p>
+    </div>
+    <div class="template-body">
+      <div class="template-preview">
+        <strong>Subject:</strong> Welcome to AI Productivity Weekly + Your First Automation<br><br>
+        <p>Hey {{first_name}},</p>
+        <p>Welcome! I'm excited you joined {{subscriber_count}}+ consultants learning to automate their work with AI.</p>
+        <p><strong>Here's what to expect:</strong></p>
+        <ul>
+          <li>Weekly tactical automation tutorials</li>
+          <li>Ready-to-deploy workflows</li>
+          <li>No fluff, just actionable content</li>
+        </ul>
+        <p><strong>Your first automation:</strong> {{starter_automation_link}}</p>
+        <p>Reply and tell me: What's the one task you most want to automate?</p>
+      </div>
+      <div class="template-vars">
+        <h4>Variables</h4>
+        <div class="var-list">
+          <span class="var-tag">{{first_name}}</span>
+          <span class="var-tag">{{subscriber_count}}</span>
+          <span class="var-tag">{{starter_automation_link}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="template-card">
+    <div class="template-header">
+      <h3>Welcome Sequence - Day 3</h3>
+      <p>Value-focused follow-up</p>
+    </div>
+    <div class="template-body">
+      <div class="template-preview">
+        <strong>Subject:</strong> The 5-minute automation that saves 5 hours/week<br><br>
+        <p>Hey {{first_name}},</p>
+        <p>Most consultants spend hours on tasks that should take minutes.</p>
+        <p>Here are the top 3 automations my readers implement first:</p>
+        <ol>
+          <li><strong>Email triage</strong> - Sort and label automatically</li>
+          <li><strong>Meeting prep</strong> - AI-generated briefings</li>
+          <li><strong>Invoice reminders</strong> - Never chase payments manually</li>
+        </ol>
+        <p>Which one resonates with you?</p>
+      </div>
+      <div class="template-vars">
+        <h4>Variables</h4>
+        <div class="var-list">
+          <span class="var-tag">{{first_name}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="template-card">
+    <div class="template-header">
+      <h3>Welcome Sequence - Day 7</h3>
+      <p>Community invitation</p>
+    </div>
+    <div class="template-body">
+      <div class="template-preview">
+        <strong>Subject:</strong> You're ready for the next level<br><br>
+        <p>Hey {{first_name}},</p>
+        <p>You've been subscribed for a week now. How's it going?</p>
+        <p>If you're finding value in these automations, here are ways to go deeper:</p>
+        <ul>
+          <li>Reply with questions - I answer every email</li>
+          <li>Check out the full recipe collection: {{recipes_link}}</li>
+          <li>Join the discussion: {{community_link}}</li>
+        </ul>
+        <p>What's your biggest automation win so far?</p>
+      </div>
+      <div class="template-vars">
+        <h4>Variables</h4>
+        <div class="var-list">
+          <span class="var-tag">{{first_name}}</span>
+          <span class="var-tag">{{recipes_link}}</span>
+          <span class="var-tag">{{community_link}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<h2 class="section-title">Engagement Templates</h2>
+
+<div class="template-grid">
+
+  <div class="template-card">
+    <div class="template-header">
+      <h3>Re-engagement</h3>
+      <p>For subscribers who haven't opened in 30+ days</p>
+    </div>
+    <div class="template-body">
+      <div class="template-preview">
+        <strong>Subject:</strong> Still interested in automating your work?<br><br>
+        <p>Hey {{first_name}},</p>
+        <p>I noticed you haven't opened an email in a while. No hard feelings - we all get busy.</p>
+        <p>But I want to make sure I'm sending you relevant content.</p>
+        <p><strong>Quick question:</strong> Are you still interested in AI automation for your consulting practice?</p>
+        <p>👍 <a href="{{yes_link}}">Yes, keep them coming</a><br>
+        👎 <a href="{{no_link}}">No, please unsubscribe me</a></p>
+        <p>If there's a specific topic you'd like me to cover, just reply.</p>
+      </div>
+      <div class="template-vars">
+        <h4>Variables</h4>
+        <div class="var-list">
+          <span class="var-tag">{{first_name}}</span>
+          <span class="var-tag">{{yes_link}}</span>
+          <span class="var-tag">{{no_link}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="template-card">
+    <div class="template-header">
+      <h3>Survey Request</h3>
+      <p>Quarterly feedback collection</p>
+    </div>
+    <div class="template-body">
+      <div class="template-preview">
+        <strong>Subject:</strong> Quick favor? (2 min survey)<br><br>
+        <p>Hey {{first_name}},</p>
+        <p>I'm planning content for the next quarter and want to make sure I'm covering what you need.</p>
+        <p>Would you take 2 minutes to answer 3 questions?</p>
+        <p><a href="{{survey_link}}">Take the quick survey →</a></p>
+        <p>As a thank you, everyone who completes it gets early access to my next automation guide.</p>
+      </div>
+      <div class="template-vars">
+        <h4>Variables</h4>
+        <div class="var-list">
+          <span class="var-tag">{{first_name}}</span>
+          <span class="var-tag">{{survey_link}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="template-card">
+    <div class="template-header">
+      <h3>Milestone Celebration</h3>
+      <p>Subscriber anniversary or achievement</p>
+    </div>
+    <div class="template-body">
+      <div class="template-preview">
+        <strong>Subject:</strong> 🎉 You've been here {{months}} months!<br><br>
+        <p>Hey {{first_name}},</p>
+        <p>{{months}} months ago, you joined AI Productivity Weekly. That's {{issues_received}} issues of automation knowledge!</p>
+        <p><strong>In that time, you've learned about:</strong></p>
+        <ul>
+          <li>{{topic_1}}</li>
+          <li>{{topic_2}}</li>
+          <li>{{topic_3}}</li>
+        </ul>
+        <p>What's been your biggest win? I'd love to hear about it.</p>
+        <p>Here's to many more automations! 🚀</p>
+      </div>
+      <div class="template-vars">
+        <h4>Variables</h4>
+        <div class="var-list">
+          <span class="var-tag">{{first_name}}</span>
+          <span class="var-tag">{{months}}</span>
+          <span class="var-tag">{{issues_received}}</span>
+          <span class="var-tag">{{topic_1}}</span>
+          <span class="var-tag">{{topic_2}}</span>
+          <span class="var-tag">{{topic_3}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<h2 class="section-title">Promotional Templates</h2>
+
+<div class="template-grid">
+
+  <div class="template-card">
+    <div class="template-header">
+      <h3>Product Launch</h3>
+      <p>New premium recipe collection</p>
+    </div>
+    <div class="template-body">
+      <div class="template-preview">
+        <strong>Subject:</strong> [New] {{product_name}} is live<br><br>
+        <p>Hey {{first_name}},</p>
+        <p>I've been working on something special for the past {{dev_weeks}} weeks.</p>
+        <p><strong>Introducing: {{product_name}}</strong></p>
+        <p>{{product_description}}</p>
+        <p><strong>What's included:</strong></p>
+        <ul>
+          <li>{{feature_1}}</li>
+          <li>{{feature_2}}</li>
+          <li>{{feature_3}}</li>
+        </ul>
+        <p><strong>Launch price:</strong> {{price}} (regular {{regular_price}})</p>
+        <p><a href="{{product_link}}">Get it now →</a></p>
+        <p>This launch price is only available until {{deadline}}.</p>
+      </div>
+      <div class="template-vars">
+        <h4>Variables</h4>
+        <div class="var-list">
+          <span class="var-tag">{{first_name}}</span>
+          <span class="var-tag">{{product_name}}</span>
+          <span class="var-tag">{{dev_weeks}}</span>
+          <span class="var-tag">{{product_description}}</span>
+          <span class="var-tag">{{feature_1-3}}</span>
+          <span class="var-tag">{{price}}</span>
+          <span class="var-tag">{{regular_price}}</span>
+          <span class="var-tag">{{product_link}}</span>
+          <span class="var-tag">{{deadline}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="template-card">
+    <div class="template-header">
+      <h3>Early Access</h3>
+      <p>Beta/preview invitations</p>
+    </div>
+    <div class="template-body">
+      <div class="template-preview">
+        <strong>Subject:</strong> You're invited: Early access to {{feature_name}}<br><br>
+        <p>Hey {{first_name}},</p>
+        <p>You've been a loyal reader, so I wanted to give you first access to something new.</p>
+        <p><strong>{{feature_name}}</strong> - {{feature_description}}</p>
+        <p>I'm looking for {{beta_spots}} people to try it and give feedback.</p>
+        <p>Interested?</p>
+        <p><a href="{{signup_link}}">Claim your early access spot →</a></p>
+        <p>Early access members also get {{bonus}}.</p>
+      </div>
+      <div class="template-vars">
+        <h4>Variables</h4>
+        <div class="var-list">
+          <span class="var-tag">{{first_name}}</span>
+          <span class="var-tag">{{feature_name}}</span>
+          <span class="var-tag">{{feature_description}}</span>
+          <span class="var-tag">{{beta_spots}}</span>
+          <span class="var-tag">{{signup_link}}</span>
+          <span class="var-tag">{{bonus}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<h2 class="section-title">Transactional Templates</h2>
+
+<div class="template-grid">
+
+  <div class="template-card">
+    <div class="template-header">
+      <h3>Purchase Confirmation</h3>
+      <p>After successful purchase</p>
+    </div>
+    <div class="template-body">
+      <div class="template-preview">
+        <strong>Subject:</strong> Your {{product_name}} is ready!<br><br>
+        <p>Hey {{first_name}},</p>
+        <p>Thanks for purchasing {{product_name}}!</p>
+        <p><strong>Access your purchase:</strong></p>
+        <p><a href="{{download_link}}">Download/Access Now →</a></p>
+        <p><strong>Order details:</strong></p>
+        <ul>
+          <li>Order #: {{order_id}}</li>
+          <li>Amount: {{amount}}</li>
+          <li>Date: {{purchase_date}}</li>
+        </ul>
+        <p><strong>Getting started:</strong></p>
+        <ol>
+          <li>{{step_1}}</li>
+          <li>{{step_2}}</li>
+          <li>{{step_3}}</li>
+        </ol>
+        <p>Questions? Just reply to this email.</p>
+      </div>
+      <div class="template-vars">
+        <h4>Variables</h4>
+        <div class="var-list">
+          <span class="var-tag">{{first_name}}</span>
+          <span class="var-tag">{{product_name}}</span>
+          <span class="var-tag">{{download_link}}</span>
+          <span class="var-tag">{{order_id}}</span>
+          <span class="var-tag">{{amount}}</span>
+          <span class="var-tag">{{purchase_date}}</span>
+          <span class="var-tag">{{step_1-3}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="template-card">
+    <div class="template-header">
+      <h3>Subscription Confirmation</h3>
+      <p>Double opt-in confirmation</p>
+    </div>
+    <div class="template-body">
+      <div class="template-preview">
+        <strong>Subject:</strong> Please confirm your subscription<br><br>
+        <p>Hey there,</p>
+        <p>You're almost subscribed to AI Productivity Weekly!</p>
+        <p>Click below to confirm your email and start receiving weekly automation tutorials:</p>
+        <p><a href="{{confirm_link}}">Confirm my subscription →</a></p>
+        <p><strong>What you'll get:</strong></p>
+        <ul>
+          <li>Weekly tactical automation tutorials</li>
+          <li>Ready-to-deploy AI workflows</li>
+          <li>No spam, unsubscribe anytime</li>
+        </ul>
+        <p>If you didn't request this, you can safely ignore this email.</p>
+      </div>
+      <div class="template-vars">
+        <h4>Variables</h4>
+        <div class="var-list">
+          <span class="var-tag">{{confirm_link}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div style="text-align: center; padding: 40px 20px; color: var(--text-light); font-size: 14px;">
+  <p>AI Productivity Weekly - Email Template Library</p>
+  <p>Last updated: January 2026</p>
+</div>
+
+</body>
+</html>
